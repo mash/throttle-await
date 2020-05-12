@@ -1,0 +1,20 @@
+{
+  "name": "throttle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node node_modules/tape/bin/tape test/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/tape": "^4.13.0",
+    "prettier": "^2.0.5",
+    "tape": "^4.13.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0"
+  }
+}
