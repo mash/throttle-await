@@ -1,4 +1,4 @@
-let sleep = (ms) => {
+const sleep = (ms) => {
   return new Promise((resolve, _) => setTimeout(resolve, ms));
 }
 
@@ -23,7 +23,7 @@ class Throttled {
       this.bucket --;
       return;
     }
-    while (this.bucket == 0) {
+    while (this.bucket === 0) {
       await sleep(this.interval / 10);
     }
     this.bucket --;
@@ -41,7 +41,7 @@ class Throttled {
 
 // Parameter fn should not use "this", for simplicity.
 function throttle(fn, interval :number, max :number, initial :number = max) {
-  let throttled = new Throttled(fn, interval, max, initial);
+  const throttled = new Throttled(fn, interval, max, initial);
   return throttled;
 }
 

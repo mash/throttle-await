@@ -1,5 +1,5 @@
 import throttle from "../src/index";
-import * as tape from 'tape';
+import tape from 'tape';
 
 tape('throttle', (t) => {
   (async () => {
