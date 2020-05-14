@@ -3,19 +3,21 @@ import tape from 'tape';
 
 tape('throttle', (t) => {
   (async () => {
-    let fn = () => new Date();
-    let throttled = throttle(fn, 1000, 2); // 2 times per second
+    let throttled = throttle(1000, 2); // 2 times per second
 
-    let first = await throttled.call();
+    await throttled.wait();
+    let first = new Date();
     console.log(`first = ${first.getTime()}`);
 
-    let second = await throttled.call();
+    await throttled.wait();
+    let second = new Date();
     console.log(`second = ${second.getTime()}`);
-    t.ok(second - first < 500, '2nd call happens immediately');
+    t.ok(second.getTime() - first.getTime() < 500, '2nd call happens immediately');
     
-    let third = await throttled.call();
+    await throttled.wait();
+    let third = new Date();
     console.log(`third = ${third.getTime()}`);
-    t.ok(third - second > 500, '3rd call is throttled');
+    t.ok(third.getTime() - second.getTime() > 500, '3rd call is throttled');
 
     throttled.cancel();
     
