@@ -1,3 +1,6 @@
+import debug_ from 'debug';
+const debug = debug_('throttle');
+
 const sleep = (ms) => {
   return new Promise((resolve, _) => setTimeout(resolve, ms));
 }
@@ -15,6 +18,7 @@ class Throttled {
   }
   periodically() :void {
     this.bucket += this.max;
+    debug('bucket += %d; bucket is %d', this.max, this.bucket);
   }
   public async wait() {
     if (this.bucket > 0) {
@@ -22,9 +26,11 @@ class Throttled {
       return;
     }
     while (this.bucket === 0) {
+      debug('sleeping for %d', this.interval / 10);
       await sleep(this.interval / 10);
     }
     this.bucket --;
+    debug('bucket --; bucket is %d', this.bucket);
     return;
   }
   cancel() :void {

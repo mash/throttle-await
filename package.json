@@ -2,13 +2,13 @@
   "name": "throttle",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "npm run build-ts && npm run lint",
     "build-ts": "tsc",
     "test": "ts-node node_modules/tape/bin/tape test/**/*.ts",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint --fix --project tsconfig.json"
+    "lint": "npx --no-install tslint --fix --project tsconfig.json"
   },
   "author": "",
   "license": "MIT",
@@ -18,5 +18,8 @@
     "tape": "^4.13.0",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
+  },
+  "dependencies": {
+    "debug": "^4.1.1"
   }
 }
