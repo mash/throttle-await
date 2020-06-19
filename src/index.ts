@@ -5,22 +5,22 @@ const sleep = (ms) => {
   return new Promise((resolve, _) => setTimeout(resolve, ms));
 }
 
-class Throttled {
-  bucket :number;
-  interval :number;
-  max :number;
-  timer;
+export default class Throttle {
+  private bucket :number;
+  private interval :number;
+  private max :number;
+  private timer;
   constructor(interval :number, max :number, initial :number = max) {
     this.bucket = initial;
     this.interval = interval;
     this.max = max;
     this.timer = setTimeout(this.periodically.bind(this), interval);
   }
-  periodically() :void {
+  private periodically() :void {
     this.bucket += this.max;
     debug('bucket += %d; bucket is %d', this.max, this.bucket);
   }
-  public async wait() {
+  async wait() {
     if (this.bucket > 0) {
       this.bucket --;
       return;
@@ -38,11 +38,3 @@ class Throttled {
     this.timer = null;
   }
 }
-
-// Parameter fn should not use "this", for simplicity.
-function throttle(interval :number, max :number, initial :number = max) {
-  const throttled = new Throttled(interval, max, initial);
-  return throttled;
-}
-
-export default throttle;

@@ -1,9 +1,9 @@
-import throttle from "../src/index";
+import Throttle from "../src/index";
 import tape from 'tape';
 
 tape('throttle', (t) => {
   (async () => {
-    let throttled = throttle(1000, 2); // 2 times per second
+    let throttled = new Throttle(1000, 2); // 2 times per second
 
     await throttled.wait();
     let first = new Date();
