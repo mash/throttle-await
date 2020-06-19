@@ -1,11 +1,12 @@
 {
-  "name": "throttle",
+  "name": "throttle-await",
   "version": "1.0.0",
-  "description": "",
+  "description": "throttle-await provides a simple class that provides an async \"wait\" function that waits while throttled",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run build-ts && npm run lint",
-    "build-ts": "tsc",
+    "build-ts": "tsc --declaration",
+    "build-ts-watch": "tsc --watch --declaration",
     "test": "ts-node node_modules/tape/bin/tape test/**/*.ts",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "npx --no-install tslint --fix --project tsconfig.json"
