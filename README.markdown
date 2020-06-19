@@ -1,3 +1,17 @@
+throttle-await
+--------------
+
+throttle-await provides a simple class that provides an async \"wait\" function that waits while throttled.
+
+## Install
+
+```
+npm i throttle-await
+```
+
+## Usage
+
+```
 import Throttle from "../src/index";
 import tape from 'tape';
 
@@ -24,3 +38,4 @@ tape('throttle', (t) => {
     t.end();
   })();
 });
+```
